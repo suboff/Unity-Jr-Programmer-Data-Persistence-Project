@@ -12,7 +12,7 @@ public class MenuUIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DisplayHiScore();
     }
 
     // Update is called once per frame
@@ -38,5 +38,11 @@ public class MenuUIHandler : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private void DisplayHiScore()
+    {
+        TextMeshProUGUI hiScoreText = GameObject.Find("HighScoreText").GetComponent<TextMeshProUGUI>();
+        hiScoreText.text = $"HiScore: {DataManager.Instance.HiScore} By: {DataManager.Instance.PlayerName}";
     }
 }
