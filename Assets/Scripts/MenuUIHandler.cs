@@ -5,6 +5,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuUIHandler : MonoBehaviour
 {
@@ -22,7 +23,12 @@ public class MenuUIHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("main");
+        TMP_InputField nameInput = GameObject.Find("NameInputField").GetComponent<TMP_InputField>();
+        if (!string.IsNullOrEmpty(nameInput.text))
+        {
+            DataManager.Instance.PlayerName = nameInput.text;
+            SceneManager.LoadScene("main");
+        }
     }
 
     public void QuitGame()
