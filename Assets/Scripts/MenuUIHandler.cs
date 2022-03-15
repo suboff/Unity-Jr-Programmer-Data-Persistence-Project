@@ -26,7 +26,7 @@ public class MenuUIHandler : MonoBehaviour
         TMP_InputField nameInput = GameObject.Find("NameInputField").GetComponent<TMP_InputField>();
         if (!string.IsNullOrEmpty(nameInput.text))
         {
-            DataManager.Instance.PlayerName = nameInput.text;
+            DataManager.Instance.CurrentPlayerName = nameInput.text;
             SceneManager.LoadScene("main");
         }
     }
@@ -43,6 +43,6 @@ public class MenuUIHandler : MonoBehaviour
     private void DisplayHiScore()
     {
         TextMeshProUGUI hiScoreText = GameObject.Find("HighScoreText").GetComponent<TextMeshProUGUI>();
-        hiScoreText.text = $"HiScore: {DataManager.Instance.HiScore} By: {DataManager.Instance.PlayerName}";
+        hiScoreText.text = $"HiScore: {DataManager.Instance.HiScore} By: {DataManager.Instance.HiScorePlayerName}";
     }
 }

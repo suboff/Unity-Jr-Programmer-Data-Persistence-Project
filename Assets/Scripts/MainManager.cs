@@ -66,7 +66,7 @@ public class MainManager : MonoBehaviour
 
     private void UpdateHiScoreText()
     {
-        HiScoreText.text = $"HiScore: {DataManager.Instance.HiScore} By: {DataManager.Instance.PlayerName}";
+        HiScoreText.text = $"HiScore: {DataManager.Instance.HiScore} By: {DataManager.Instance.HiScorePlayerName}";
     }
 
     void AddPoint(int point)
@@ -77,6 +77,7 @@ public class MainManager : MonoBehaviour
         if(m_Points > DataManager.Instance.HiScore)
         {
             DataManager.Instance.HiScore = m_Points;
+            DataManager.Instance.HiScorePlayerName = DataManager.Instance.CurrentPlayerName;
         }
 
         UpdateHiScoreText();

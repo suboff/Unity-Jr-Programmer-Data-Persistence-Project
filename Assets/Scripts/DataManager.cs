@@ -8,22 +8,23 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
 
     public int HiScore;
-    private string m_PlayerName;
-    public string PlayerName
+    private string m_HiScorePlayerName;
+    public string HiScorePlayerName
     {
         get 
         {
-            if(string.IsNullOrEmpty(m_PlayerName))
+            if(string.IsNullOrEmpty(m_HiScorePlayerName))
             {
                 return "Nobody!";
             }
-            return m_PlayerName;
+            return m_HiScorePlayerName;
         }
         set
         {
-            m_PlayerName = value;
+            m_HiScorePlayerName = value;
         }
     }
+    public string CurrentPlayerName;
 
     private string m_SaveDataPath;
 
@@ -54,7 +55,7 @@ public class DataManager : MonoBehaviour
         SaveData saveData = 
             new SaveData { 
                 HiScore = HiScore, 
-                PlayerName = PlayerName };
+                PlayerName = HiScorePlayerName };
 
         string json = JsonUtility.ToJson(saveData);
 
@@ -68,7 +69,7 @@ public class DataManager : MonoBehaviour
             string json = File.ReadAllText(m_SaveDataPath);
             SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
-            PlayerName = saveData.PlayerName;
+            HiScorePlayerName = saveData.PlayerName;
             HiScore = saveData.HiScore;
         }
     }
